@@ -5,6 +5,8 @@ Self hosted notification server.
 ## Project Status
 
 [![Build Status](https://api.travis-ci.org/JosKar/iris_server.svg?branch=master)](https://api.travis-ci.org/JosKar/iris_server.svg?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/JosKar/iris_server/badge.svg?branch=master)](https://coveralls.io/github/JosKar/iris_server?branch=master)
+
 
 The project is under development.
 
