@@ -12,5 +12,8 @@ services:
 before_script:
   - mix do ecto.create, ecto.migrate
 
+env:
+  - MIX_ENV=test
+
 script:
 - mix test
