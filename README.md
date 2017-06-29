@@ -4,6 +4,8 @@ Self hosted notification server.
 
 ## Project Status
 
+[![Build Status](https://api.travis-ci.org/JosKar/iris_server.svg?branch=master)](https://api.travis-ci.org/JosKar/iris_server.svg?branch=master)
+
 The project is under development.
 
 ## Usage example
