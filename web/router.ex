@@ -19,8 +19,9 @@ defmodule Iris.Router do
     get "/", PageController, :index
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", Iris do
-  #   pipe_through :api
-  # end
+  scope "/api", Iris do
+     pipe_through :api
+
+    resources "/services", ServiceController, except: [:new, :edit]
+  end
 end
