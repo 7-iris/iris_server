@@ -6,7 +6,7 @@ defmodule Iris.ServiceView do
   end
 
   def render("show.json", %{service: service}) do
-    %{data: render_one(service, Iris.ServiceView, "service.json")}
+    render_one(service, Iris.ServiceView, "service.json")
   end
 
   def render("service.json", %{service: service}) do

@@ -8,7 +8,7 @@ defmodule Iris.ServiceController do
     render(conn, "index.json", services: services)
   end
 
-  def create(conn, %{"service" => service_params}) do
+  def create(conn, service_params) do
     changeset = Service.changeset(%Service{}, service_params)
 
     case Repo.insert(changeset) do
@@ -29,8 +29,8 @@ defmodule Iris.ServiceController do
     render(conn, "show.json", service: service)
   end
 
-  def update(conn, %{"id" => id, "service" => service_params}) do
-    service = Repo.get!(Service, id)
+  def update(conn, service_params) do
+    service = Repo.get!(Service, service_params["id"])
     changeset = Service.changeset(service, service_params)
 
     case Repo.update(changeset) do
