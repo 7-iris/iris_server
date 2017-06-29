@@ -23,6 +23,6 @@ defmodule Iris.Router do
      pipe_through :api
 
     resources "/services", ServiceController, except: [:new, :edit]
-    resources "/messages", MessageController, except: [:new, :edit]
+    resources "/messages", MessageController
   end
 end

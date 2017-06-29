@@ -17,7 +17,7 @@ defmodule Iris.MessageControllerTest do
   test "shows chosen resource", %{conn: conn} do
     message = Repo.insert! %Message{}
     conn = get conn, message_path(conn, :show, message)
-    assert json_response(conn, 200)["data"] == %{"id" => message.id,
+    assert json_response(conn, 200) == %{"id" => message.id,
       "title" => message.title,
       "text" => message.text,
       "priority" => message.priority,
@@ -32,26 +32,26 @@ defmodule Iris.MessageControllerTest do
   end
 
   test "creates and renders resource when data is valid", %{conn: conn} do
-    conn = post conn, message_path(conn, :create), message: @valid_attrs
-    assert json_response(conn, 201)["data"]["id"]
+    conn = post conn, message_path(conn, :create), @valid_attrs
+    assert json_response(conn, 201)["id"]
     assert Repo.get_by(Message, @valid_attrs)
   end
 
   test "does not create resource and renders errors when data is invalid", %{conn: conn} do
-    conn = post conn, message_path(conn, :create), message: @invalid_attrs
+    conn = post conn, message_path(conn, :create), @invalid_attrs
     assert json_response(conn, 422)["errors"] != %{}
   end
 
   test "updates and renders chosen resource when data is valid", %{conn: conn} do
     message = Repo.insert! %Message{}
-    conn = put conn, message_path(conn, :update, message), message: @valid_attrs
-    assert json_response(conn, 200)["data"]["id"]
+    conn = put conn, message_path(conn, :update, message), @valid_attrs
+    assert json_response(conn, 200)["id"]
     assert Repo.get_by(Message, @valid_attrs)
   end
 
   test "does not update chosen resource and renders errors when data is invalid", %{conn: conn} do
     message = Repo.insert! %Message{}
-    conn = put conn, message_path(conn, :update, message), message: @invalid_attrs
+    conn = put conn, message_path(conn, :update, message), @invalid_attrs
     assert json_response(conn, 422)["errors"] != %{}
   end
 

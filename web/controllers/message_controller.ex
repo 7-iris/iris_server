@@ -8,9 +8,8 @@ defmodule Iris.MessageController do
     render(conn, "index.json", messages: messages)
   end
 
-  def create(conn, %{"message" => message_params}) do
+  def create(conn, message_params) do
     changeset = Message.changeset(%Message{}, message_params)
-
     case Repo.insert(changeset) do
       {:ok, message} ->
         conn
@@ -29,8 +28,8 @@ defmodule Iris.MessageController do
     render(conn, "show.json", message: message)
   end
 
-  def update(conn, %{"id" => id, "message" => message_params}) do
-    message = Repo.get!(Message, id)
+  def update(conn, message_params) do
+    message = Repo.get!(Message, message_params["id"])
     changeset = Message.changeset(message, message_params)
 
     case Repo.update(changeset) do
