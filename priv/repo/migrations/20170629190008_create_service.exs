@@ -9,6 +9,7 @@ defmodule Iris.Repo.Migrations.CreateService do
       add :description, :string
       add :icon, :string
       add :token, :string
+      add :type, :service_type
 
       timestamps()
     end

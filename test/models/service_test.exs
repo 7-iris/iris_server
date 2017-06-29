@@ -3,7 +3,7 @@ defmodule Iris.ServiceTest do
 
   alias Iris.Service
 
-  @valid_attrs %{description: "some content", icon: "some content", name: "some content", token: "some content"}
+  @valid_attrs %{description: "some content", icon: "some content", name: "some content", token: "some content", type: "P"}
   @invalid_attrs %{}
 
   test "changeset with valid attributes" do

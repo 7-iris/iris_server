@@ -2,7 +2,7 @@ defmodule Iris.ServiceControllerTest do
   use Iris.ConnCase
 
   alias Iris.Service
-  @valid_attrs %{description: "some content", icon: "some content", name: "some content", token: "some content"}
+  @valid_attrs %{description: "some content", icon: "some content", name: "some content", token: "some content", type: "P"}
   @invalid_attrs %{}
 
   setup %{conn: conn} do

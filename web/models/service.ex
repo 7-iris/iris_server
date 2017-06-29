@@ -1,11 +1,13 @@
 defmodule Iris.Service do
   use Iris.Web, :model
 
+
   schema "services" do
     field :name, :string
     field :description, :string
     field :icon, :string
     field :token, :string
+    field :type, ServiceTypeEnum
 
     timestamps()
   end
@@ -15,7 +17,7 @@ defmodule Iris.Service do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:name, :description, :icon, :token])
-    |> validate_required([:name, :description, :icon, :token])
+    |> cast(params, [:name, :description, :icon, :token, :type])
+    |> validate_required([:name, :description, :icon, :token, :type])
   end
 end
