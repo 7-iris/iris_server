@@ -14,6 +14,7 @@ defmodule Iris.ServiceView do
       name: service.name,
       description: service.description,
       icon: service.icon,
-      token: service.token}
+      token: service.token,
+      type: service.type}
   end
 end

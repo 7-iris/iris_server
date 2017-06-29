@@ -21,7 +21,8 @@ defmodule Iris.ServiceControllerTest do
       "name" => service.name,
       "description" => service.description,
       "icon" => service.icon,
-      "token" => service.token}
+      "token" => service.token,
+      "type" => service.type}
   end
 
   test "renders page not found when id is nonexistent", %{conn: conn} do
