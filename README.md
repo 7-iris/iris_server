@@ -4,7 +4,7 @@ Self hosted notification server.
 
 ## Project Status
 
-[![Build Status](https://api.travis-ci.org/JosKar/iris_server.svg?branch=master)](https://api.travis-ci.org/JosKar/iris_server.svg?branch=master)
+[![Build Status](https://api.travis-ci.org/JosKar/iris_server.svg?branch=master)](https://api.travis-ci.org/JosKar/iris_server)
 [![Coverage Status](https://coveralls.io/repos/github/JosKar/iris_server/badge.svg?branch=master)](https://coveralls.io/github/JosKar/iris_server?branch=master)
 
 
@@ -20,11 +20,23 @@ TODO Quick example
 
 TODO
 
-## Road Map
+## Roadmap
 
-- [ ] Implement basic API
-- [ ] Create deb packaging for the server
-- [ ] Create a minimal React Native application
+Version 0.1
+- [ ] Implement basic API (Servcies, subscriptions, messaging).
+- [ ] Implement the bare minimum UI.
+- [ ] Send messages to gcm.
+- [ ] Create deb package for easy installation.
+
+Version 0.2
+- [ ] Services as plugins.
+- [ ] Create some default services eg. fail2ban, pam-sshd, paypal.
+
+Version 0.3
+- [ ] Create a bare minimum Android application.
+
+Version ??
+- [ ] Create a gcm replacement.
 
 ## Built With
 
@@ -36,7 +48,7 @@ TODO
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE) file for details
 
 ## Acknowledgments
 
