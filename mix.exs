@@ -41,7 +41,8 @@ defmodule Iris.Mixfile do
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.11"},
      {:cowboy, "~> 1.0"},
-     {:excoveralls, "~> 0.6", only: :test}]
+     {:excoveralls, "~> 0.6", only: :test},
+     {:hulaaki, "~> 0.0.4"}]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.
