@@ -16,7 +16,7 @@ defmodule Mqtt.Messenger do
 
   def init(%{} = state) do
     {:ok, conn_pid} = Connection.start_link(self)
-    configuration = [client_id: "some-name", host: "localhost", port: 1883]
+    configuration = Application.get_env(:iris, Mqtt.Messenger)
     host          = configuration |> Keyword.fetch!(:host)
     port          = configuration |> Keyword.fetch!(:port)
     timeout       = configuration |> Keyword.get(:timeout, 100)

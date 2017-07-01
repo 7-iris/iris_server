@@ -17,3 +17,8 @@ config :iris, Iris.Repo,
   database: "iris_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
+
+config :iris, Mqtt.Messenger,
+  client_id: "iris-server",
+  host: "localhost",
+  port: 1883

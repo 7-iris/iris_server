@@ -41,3 +41,8 @@ config :iris, Iris.Repo,
   database: "iris_dev",
   hostname: "localhost",
   pool_size: 10
+
+config :iris, Mqtt.Messenger,
+  client_id: "iris-server",
+  host: "localhost",
+  port: 1883
