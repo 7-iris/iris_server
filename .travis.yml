@@ -10,9 +10,8 @@ services:
   - postgresql
 
 before_install:
-  - wget http://emqtt.com/downloads/latest/ubuntu16_04
-  - mv ubuntu16_04 latest_emqtt.deb
-  - sudo dpkg -i latest_emqtt.deb
+  - wget http://emqtt.io/downloads/latest/ubuntu12_04-deb -O emqtt.deb
+  - sudo dpkg -i emqtt.deb
   - sudo service emqttd start
 
 before_script:
