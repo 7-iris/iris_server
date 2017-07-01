@@ -10,6 +10,7 @@ defmodule Mqtt.Messenger do
   end
 
   def ping, do: GenServer.call(__MODULE__, :ping)
+  def publish(opts), do: GenServer.call(__MODULE__, {:publish, opts})
 
   ## GenServer API
 
@@ -40,6 +41,26 @@ defmodule Mqtt.Messenger do
     :ok = state.connection |> Connection.connect(message, connect_opts)
     {:ok, state}
   end
+
+  def handle_call({:publish, opts}, _from, state) do
+     topic  = opts |> Keyword.fetch!(:topic)
+     msg    = opts |> Keyword.fetch!(:message)
+     dup    = opts |> Keyword.fetch!(:dup)
+     qos    = opts |> Keyword.fetch!(:qos)
+     retain = opts |> Keyword.fetch!(:retain)
+
+     message =
+       case qos do
+         0 ->
+           Message.publish(topic, msg, dup, qos, retain)
+         _ ->
+           id = opts |> Keyword.fetch!(:id)
+           Message.publish(id, topic, msg, dup, qos, retain)
+       end
+
+     :ok = state.connection |> Connection.publish(message)
+     {:reply, :ok, state}
+   end
 
   def handle_call(:ping, _from, state) do
    :ok = state.connection |> Connection.ping
