@@ -7,7 +7,7 @@ defmodule Iris do
     children = [
       supervisor(Iris.Repo, []),
       supervisor(Iris.Endpoint, []),
-      supervisor(Mttq.Supervisor, [])
+      supervisor(Mqtt.Supervisor, [])
     ]
 
     opts = [strategy: :one_for_one, name: Iris.Supervisor]

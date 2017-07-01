@@ -1,4 +1,4 @@
-defmodule Mttq.Supervisor do
+defmodule Mqtt.Supervisor do
   use Supervisor
 
   def start_link do
@@ -7,7 +7,7 @@ defmodule Mttq.Supervisor do
 
   def init(:ok) do
     children = [
-      worker(Mttq.Messenger, [])
+      worker(Mqtt.Messenger, [])
     ]
 
     supervise(children, strategy: :one_for_one)

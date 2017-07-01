@@ -1,4 +1,4 @@
-defmodule Mttq.Messenger do
+defmodule Mqtt.Messenger do
   use GenServer
   alias Hulaaki.Connection
   alias Hulaaki.Message
