@@ -9,6 +9,12 @@ addons:
 services:
   - postgresql
 
+before_install:
+  - wget http://emqtt.com/downloads/latest/ubuntu16_04
+  - mv ubuntu16_04 latest_emqtt.deb
+  - sudo dpkg -i latest_emqtt.deb
+  - sudo service emqttd start
+
 before_script:
   - mix do ecto.create, ecto.migrate
 
