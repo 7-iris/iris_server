@@ -3,10 +3,10 @@
 A self hosted notification server without google cloud messaging or firebase cloud messaging.
 
 ## Motivation
-The driving force behind this project is my need of a tool that:
+The driving force behind this project is my need for a tool that:
 - Notifies the user when something is happening in a service/application.
-- The user can deploy it in hes/her premises.
-- Use a self hosted and open source message broker and not an external one.
+- The user can deploy in hes/her premises.
+- Uses a self hosted and open source message broker and not an external one.
 
 ## Project Status
 
