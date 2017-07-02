@@ -1,0 +1,36 @@
+<form>
+<fieldset>
+  <legend>Send notification</legend>
+  <div class="form-group">
+    <label for="service">Send as</label>
+    <select class="form-control" id="service">
+      <option>Iris</option>
+      <option>SSH</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="device">Device</label>
+    <select class="form-control" id="device">
+      <option>All</option>
+      <option>blabla</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="title">Title</label>
+    <input class="form-control" id="title" placeholder="optional">
+  </div>
+
+  <div class="form-group">
+     <label for="message">Message</label>
+     <textarea class="form-control" id="message" rows="3"></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="title">Url</label>
+    <input class="form-control" id="url" placeholder="optional">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</fieldset>
+</form>

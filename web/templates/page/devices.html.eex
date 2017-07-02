@@ -1,0 +1,23 @@
+<div class="page-header">
+  <h4>Devices</h4>
+</div>
+<div class="bs-component">
+  <table class="table table-striped table-hover table-bordered">
+    <thead class="thead-inverse">
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Status</th>
+        <th>Last Synced</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>blabla</td>
+        <td>disabled</td>
+        <td>about 13 hours ago</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

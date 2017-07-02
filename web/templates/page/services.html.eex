@@ -1,0 +1,21 @@
+<div class="page-header">
+  <h4>Applications</h4>
+</div>
+<div class="bs-component">
+  <table class="table table-striped table-hover table-bordered">
+    <thead class="thead-inverse">
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>SSH</td>
+        <td>open ssh</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
