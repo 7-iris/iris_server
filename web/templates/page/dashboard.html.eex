@@ -1,0 +1,15 @@
+<div class="col-lg-12">
+  <div class="page-header">
+    <h1>Title</h1>
+    <p class="lead">Subtitle</p>
+  </div>
+</div>
+<div class="col-lg-12">
+  <%= render "notification_form.html" %>
+</div>
+<div class="col-lg-12">
+  <%= render "devices.html" %>
+</div>
+<div class="col-lg-12">
+  <%= render "services.html" %>
+</div>

@@ -8,10 +8,10 @@
 
       <ul class="nav navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" href="#" target="_blank">Login</a>
+          <%= link "Login", to: session_path(@conn, :login), class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#" target="_blank">Signup</a>
+          <%= link "Signup", to: registration_path(@conn, :signup), class: "nav-link" %>
         </li>
       </ul>
 

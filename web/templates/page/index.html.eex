@@ -5,11 +5,5 @@
   </div>
 </div>
 <div class="col-lg-12">
-  <%= render "notification_form.html" %>
-</div>
-<div class="col-lg-12">
-  <%= render "devices.html" %>
-</div>
-<div class="col-lg-12">
-  <%= render "services.html" %>
+  Download the android client here...
 </div>

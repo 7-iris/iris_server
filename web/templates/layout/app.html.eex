@@ -12,12 +12,12 @@
   </head>
   <body>
 
-    <%= render "nav.html" %>
+    <%= render "nav.html", assigns %>
 
     <div class="container">
 
       <%= render @view_module, @view_template, assigns %>
-      <%= render "footer.html" %>
+      <%= render "footer.html", assigns %>
     </div>
 
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
