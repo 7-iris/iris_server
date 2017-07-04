@@ -46,3 +46,6 @@ config :iris, Mqtt.Messenger,
   client_id: "iris-server",
   host: "localhost",
   port: 1883
+
+config :iris, Iris.Mailer,
+  adapter: Bamboo.LocalAdapter

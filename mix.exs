@@ -21,7 +21,7 @@ defmodule Iris.Mixfile do
   def application do
     [mod: {Iris, []},
      applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex]]
+                    :phoenix_ecto, :postgrex, :bamboo]]
   end
 
   # Specifies which paths to compile per environment.
@@ -42,7 +42,8 @@ defmodule Iris.Mixfile do
      {:gettext, "~> 0.11"},
      {:cowboy, "~> 1.0"},
      {:excoveralls, "~> 0.6", only: :test},
-     {:hulaaki, "~> 0.0.4"}]
+     {:hulaaki, "~> 0.0.4"},
+     {:bamboo, "~> 0.8"}]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.
