@@ -11,15 +11,14 @@
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
   </head>
   <body>
-
     <%= render "nav.html", assigns %>
-
+    <div class="col-12" style="height:50px;"></div>
+    <%= render "messages.html", assigns %>
     <div class="container">
-
       <%= render @view_module, @view_template, assigns %>
+      <div class="col-12" style="height:50px;"></div>
       <%= render "footer.html", assigns %>
     </div>
-
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
   </body>
 </html>
