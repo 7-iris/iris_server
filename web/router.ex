@@ -18,11 +18,18 @@ defmodule Iris.Router do
   end
 
   scope "/", Iris do
-    pipe_through :browser # Use the default browser stack
+    pipe_through :browser
 
     get "/", PageController, :index
+    get "/dashboard", PageController, :dashboard
     resources "/users", UserController
 
+    get "/signup", RegistrationController, :signup
+    post "/signup", RegistrationController, :signup
+
+    get "/login", SessionController, :login
+    post "/login", SessionController, :login
+    get "/logout", SessionController, :logout
   end
 
   scope "/api", Iris do

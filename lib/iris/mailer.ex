@@ -1,3 +1,3 @@
 defmodule Iris.Mailer do
-  use Bamboo.Mailer, otp_app: :warehouse
+  use Bamboo.Mailer, otp_app: :iris
 end

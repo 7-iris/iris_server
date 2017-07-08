@@ -1,11 +1,18 @@
-# Script for populating the database. You can run it as:
-#
-#     mix run priv/repo/seeds.exs
-#
-# Inside the script, you can read and write to any of your
-# repositories directly:
-#
-#     Iris.Repo.insert!(%Iris.SomeModel{})
-#
-# We recommend using the bang functions (`insert!`, `update!`
-# and so on) as they will fail if something goes wrong.
+alias Iris.{Repo, Role}
+import Ecto.Query, only: [from: 2]
+
+find_or_create_role = fn role_name, admin ->
+  case Repo.all(from r in Role, where: r.title == ^role_name and r.admin == ^admin) do
+    [] ->
+      IO.puts "Role: #{role_name} does not exists, creating"
+      %Role{}
+      |> Role.changeset(%{title: role_name, admin: admin})
+      |> Repo.insert!()
+     [role] ->
+      IO.puts "Role: #{role_name} already exists, skipping"
+      role
+  end
+end
+
+user_role = find_or_create_role.("User Role", false)
+admin_role = find_or_create_role.("Admin Role", true)

@@ -1,0 +1,1 @@
+<p>Follow this link <%= link "link", to: session_url(Iris.Endpoint, :login, t: @token) %> to login to your account.</p>
