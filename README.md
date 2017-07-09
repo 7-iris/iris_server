@@ -59,4 +59,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE) f
 
 ## Acknowledgments
 
-* Inspired by [pushbullet](htp://pushbullet.com/), [pushover](http://pushover.net/) and [pushjet](htto://pushjet.io/)
+* Inspired by [pushbullet](http://pushbullet.com/), [pushover](http://pushover.net/) and [pushjet](http://pushjet.io/)

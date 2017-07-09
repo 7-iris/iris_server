@@ -8,6 +8,6 @@
   </div>
 
   <div class="form-group">
-    <%= submit "Signup", class: "btn btn-primary" %>
+    <%= submit "Login", class: "btn btn-primary" %>
   </div>
 <% end %>
