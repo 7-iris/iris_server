@@ -14,10 +14,14 @@ defmodule Iris.User do
   end
 
   @doc """
-  Creates a user without admin privilages
+  Creates a user with normal privilages.
   """
   def create_simple_user(struct, params \\ %{}) do
     [role] = Repo.all(from role in Role, where: [admin: false])
+    create_user(struct, params, role)
+  end
+
+  def create_user(struct, params \\ %{}, role) do
     struct
     |> cast(params, [:email])
     |> unique_constraint(:email)
@@ -36,14 +40,14 @@ defmodule Iris.User do
   end
 
   @doc """
-  Check if the user role is admin
+  Check if the user role is admin.
   """
   def is_admin?(user) do
     (role = Repo.get(Role, user.role_id)) && role.admin
   end
 
   @doc """
-  Check if the user is active
+  If the disabled_at is not empty then the user is not active.
   """
   def is_active?(user) do
     user.disabled_at == nil

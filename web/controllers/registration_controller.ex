@@ -12,12 +12,11 @@ defmodule Iris.RegistrationController do
     case Repo.insert(changeset) do
       {:ok, user} ->
         Email.welcome(user)
-        # AuthenticationToken.send_token(user.email)
+        AuthenticationToken.send_token(user.email)
         conn
         |> put_flash(:info, "You signed up successfully. Please check your inbox.")
         |> redirect(to: page_path(conn, :index))
       {:error, changeset} ->
-        IO.puts changeset
         render conn, "signup.html", changeset: User.changeset(%User{})
     end
   end

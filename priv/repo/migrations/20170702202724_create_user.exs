@@ -5,6 +5,7 @@ defmodule Iris.Repo.Migrations.CreateUser do
     create table(:users) do
       add :email, :string
       add :disabled_at, :utc_datetime, default: nil, null: true
+      add :role_id, references(:roles)
 
       timestamps()
     end

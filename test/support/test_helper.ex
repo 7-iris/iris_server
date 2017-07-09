@@ -4,10 +4,9 @@ defmodule Iris.TestHelper do
   import Phoenix.ConnTest, only: [dispatch: 5, build_conn: 0]
 
   alias Iris.{Repo, Role, User}
-  # Data creation
 
-  def create_role(%{name: name, admin: admin}) do
-    Role.changeset(%Role{}, %{name: name, admin: admin})
+  def create_role(%{title: title, admin: admin}) do
+    Role.changeset(%Role{}, %{title: title, admin: admin})
     |> Repo.insert
   end
 
@@ -15,9 +14,7 @@ defmodule Iris.TestHelper do
     if user = Repo.get_by(User, email: email) do
       Repo.delete(user)
     end
-    role
-    |> build_assoc(:users)
-    |> User.changeset(%{email: email})
+    User.create_user(%User{}, %{email: email}, role)
     |> Repo.insert
   end
 
