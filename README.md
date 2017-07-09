@@ -17,14 +17,17 @@ This project is under development, it is not ready for production use yet.
 
 ## Usage example
 
-```
-TODO Quick example
-```
+To send a notification from bash:
 
-### Prerequisites
-  TODO
+```
+echo '{"service_token":"xyz","title":"Testing","text":"notification message"}' | curl -H "Content-Type: application/json" -XPOST -d @-  http://localhost:4000/api/messages
+```
 
 ## Installation
+
+### Prerequisites
+  In order to get iris to work you need to install the emqttd server first.
+  You can find  the instructions [here](http://emqtt.io/docs/v2/install.html).
 
 ### Installing via DEB package
   TODO
@@ -39,7 +42,7 @@ TODO Quick example
 * [Emqttd](https://github.com/emqtt/emqttd)
 * [Bootstrap](https://github.com/twbs/bootstrap)
 * [Bootswatch](https://github.com/thomaspark/bootswatch)
-* And many other...
+* And many more...
 
 ## Resources
 
