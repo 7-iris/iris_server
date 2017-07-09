@@ -9,7 +9,7 @@ defmodule Iris.SessionController do
       {:ok, user} ->
         conn
         |> assign(:current_user, user)
-        |> put_session(:current_user, %{ id: user.id })
+        |> put_session(:current_user, user)
         |> configure_session(renew: true)
         |> put_flash(:info, "You signed in successfully.")
         |> redirect(to: page_path(conn, :dashboard))

@@ -42,4 +42,11 @@ defmodule Iris.User do
     (role = Repo.get(Role, user.role_id)) && role.admin
   end
 
+  @doc """
+  Check if the user is active
+  """
+  def is_active?(user) do
+    user.disabled_at == nil
+  end
+
 end
