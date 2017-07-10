@@ -2,9 +2,6 @@ defmodule Iris.Email do
 
   use Bamboo.Phoenix, view: Iris.EmailView
 
-  import Bamboo.Email
-  alias Iris.Mailer
-
   @doc """
   Email containing the magic login.
   """
@@ -18,7 +15,6 @@ defmodule Iris.Email do
     |> render(:login, token: auth_token)
     |> put_text_layout({Iris.LayoutView, "email.text"})
     |> render(:login, token: auth_token)
-    |> Mailer.deliver_later
   end
 
   @doc """
@@ -34,7 +30,6 @@ defmodule Iris.Email do
     |> render(:welcome, user: user)
     |> put_text_layout({Iris.LayoutView, "email.text"})
     |> render(:welcome, user: user)
-    |> Mailer.deliver_later
   end
 
   defp get_host_name() do
