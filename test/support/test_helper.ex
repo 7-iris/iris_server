@@ -3,7 +3,12 @@ defmodule Iris.TestHelper do
   import Ecto, only: [build_assoc: 2]
   import Phoenix.ConnTest, only: [dispatch: 5, build_conn: 0]
 
-  alias Iris.{Repo, Role, User}
+  alias Iris.{Repo, Role, User, Router.Helpers}
+
+  def login_user(token, endpoint) do
+    conn = build_conn()
+    dispatch(conn, endpoint, :get, Helpers.session_path(conn, :login), t: token)
+  end
 
   def create_role(%{title: title, admin: admin}) do
     Role.changeset(%Role{}, %{title: title, admin: admin})

@@ -6,13 +6,25 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <a href="/" class="navbar-brand">Iris</a>
 
+      <%
+        user = current_user(@conn)
+      %>
       <ul class="nav navbar-nav ml-auto">
-        <li class="nav-item">
-          <%= link "Login", to: session_path(@conn, :login), class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link "Signup", to: registration_path(@conn, :signup), class: "nav-link" %>
-        </li>
+        <%= if user do %>
+          <li class="nav-item">
+            <%= link "Dashboard", to: page_path(@conn, :dashboard), class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link "Logout", to: session_path(@conn, :logout), class: "nav-link" %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link "Login", to: session_path(@conn, :login), class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link "Signup", to: registration_path(@conn, :signup), class: "nav-link" %>
+          </li>
+        <% end %>
       </ul>
 
     </div>
