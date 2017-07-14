@@ -1,6 +1,6 @@
 # Iris
 
-A self hosted notification server without google cloud messaging or firebase cloud messaging.
+A self hosted notification server without google cloud messaging, firebase cloud messaging or apple push notification service.
 
 ## Motivation
 The driving force behind this project is my need for a tool that:
@@ -48,13 +48,14 @@ echo '{"service_token":"xyz","title":"Testing","text":"notification message"}' |
 
 * [Project roadmap](https://github.com/7-iris/iris_server/wiki/Roadmap)
 * [What is mqtt?](http://mqtt.org/faq)
+* [What is emqttd?](http://emqtt.io/about)
 
 ## Naming
 Iris in Greek mythology was one of the messengers of the Olympian gods.
 
 ## Authors
 
-* Stelios Joseph Karras
+* Stelios Joseph Karras [stylkarr@gmail.com](mailto://stylkarr@gmail.com)
 
 ## License
 
