@@ -1,7 +1,6 @@
 defmodule Iris.Service do
   use Iris.Web, :model
 
-
   schema "services" do
     field :name, :string
     field :description, :string

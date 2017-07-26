@@ -4,7 +4,7 @@ defmodule Iris.RegistrationControllerTest do
 
   alias Iris.{TestHelper, Email}
   @valid_post_attrs %{"user" => %{email: "test2@test.com"}}
-  @existinguser %{"user" => %{email: "test@test.com"}}
+  @existing_user %{"user" => %{email: "test@test.com"}}
   @invalid_post_attrs %{"user" => %{email: nil}}
 
   setup do
@@ -25,7 +25,7 @@ defmodule Iris.RegistrationControllerTest do
   end
 
   test "POST /signup don't leak information", %{conn: conn} do
-    conn = post conn, registration_path(conn, :signup), @existinguser
+    conn = post conn, registration_path(conn, :signup), @existing_user
     assert get_flash(conn, :info) == "You signed up successfully."
     assert redirected_to(conn) == session_path(conn, :login)
   end

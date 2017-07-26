@@ -7,6 +7,9 @@ defmodule Iris.SessionController do
   def login(%{method: "GET"} = conn, %{"t" => token}) do
     case AuthenticationToken.verify_token_value(token) do
       {:ok, user} ->
+        user = Iris.User
+        |> Iris.Repo.get(user.id)
+        |> Iris.Repo.preload(:role)
         conn
         |> assign(:current_user, user)
         |> put_session(:current_user, user)

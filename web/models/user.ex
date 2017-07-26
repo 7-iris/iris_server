@@ -8,7 +8,7 @@ defmodule Iris.User do
     field :disabled_at, Ecto.DateTime
     field :disabled, :boolean, virtual: true
 
-    has_one :role, Iris.Role
+    belongs_to :role, Iris.Role
 
     timestamps()
   end
@@ -26,7 +26,7 @@ defmodule Iris.User do
     |> cast(params, [:email])
     |> unique_constraint(:email)
     |> put_change(:role_id, role.id)
-    |> validate_required([:email])
+    |> validate_required([:email, :role_id])
     |> validate_format(:email, ~r/@/)
   end
 

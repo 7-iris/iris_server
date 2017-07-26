@@ -1,6 +1,5 @@
 defmodule Iris.TestHelper do
 
-  import Ecto, only: [build_assoc: 2]
   import Phoenix.ConnTest, only: [dispatch: 5, build_conn: 0]
 
   alias Iris.{Repo, Role, User, Router.Helpers}

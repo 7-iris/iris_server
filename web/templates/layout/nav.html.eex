@@ -14,6 +14,14 @@
           <li class="nav-item">
             <%= link "Dashboard", to: page_path(@conn, :dashboard), class: "nav-link" %>
           </li>
+          <%= if current_user_is_admin?(@conn) do %>
+            <li class="nav-item">
+              <%= link "Users", to: user_path(@conn, :index), class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link "Settings", to: page_path(@conn, :settings), class: "nav-link" %>
+            </li>
+          <% end %>
           <li class="nav-item">
             <%= link "Logout", to: session_path(@conn, :logout), class: "nav-link" %>
           </li>
