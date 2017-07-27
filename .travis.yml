@@ -12,7 +12,7 @@ services:
   - postgresql
 
 before_install:
-  - wget http://emqtt.io/downloads/latest/ubuntu14_04-deb -O emqtt.deb
+  - wget http://emqtt.io/downloads/stable/ubuntu14_04-deb -O emqtt.deb
   - sudo dpkg -i emqtt.deb
   - sudo service emqttd start
 
