@@ -1,12 +1,18 @@
 defmodule Iris.ServiceControllerTest do
   use Iris.ConnCase
 
-  alias Iris.Service
+  alias Iris.{Service, TestHelper, Support.AuthenticationToken}
   @valid_attrs %{description: "some content", icon: "some content", name: "some content", token: "some content", type: "P"}
   @invalid_attrs %{}
 
-  setup %{conn: conn} do
-    {:ok, conn: put_req_header(conn, "accept", "application/json")}
+  setup do
+    {:ok, user_role} = TestHelper.create_role(%{title: "User Role", admin: false})
+    {:ok, simple_user} = TestHelper.create_user(user_role, %{email: "test@test.com"})
+
+    simple_token = AuthenticationToken.create_token(simple_user)
+    simple_conn = TestHelper.login_user(simple_token, @endpoint)
+
+    {:ok, conn: simple_conn}
   end
 
   test "lists all entries on index", %{conn: conn} do

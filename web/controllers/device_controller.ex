@@ -3,6 +3,8 @@ defmodule Iris.DeviceController do
 
   alias Iris.Device
 
+  plug Iris.Plugs.AuthedicateUser
+
   def index(conn, _params) do
     devices = Repo.all(Device)
     render(conn, "index.html", devices: devices)

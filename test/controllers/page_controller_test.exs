@@ -12,7 +12,7 @@ defmodule Iris.PageControllerTest do
 
     simple_token = AuthenticationToken.create_token(simple_user)
     admin_token = AuthenticationToken.create_token(admin_user)
-    admin_conn = TestHelper.login_user(simple_token, @endpoint)
+    admin_conn = TestHelper.login_user(admin_token, @endpoint)
     {:ok, conn: build_conn(), simple_token: simple_token, admin_token: admin_token, admin_conn: admin_conn}
   end
 
@@ -23,12 +23,12 @@ defmodule Iris.PageControllerTest do
 
   test "GET /dashboard", %{conn: conn} do
     conn = get conn, "/dashboard"
-    assert response(conn, 403) =~ "Forbidden"
+    assert response(conn, 401) =~ "Unauthorized"
   end
 
   test "GET /settings", %{conn: conn} do
     conn = get conn, "/settings"
-    assert response(conn, 403) =~ "Forbidden"
+    assert response(conn, 401) =~ "Unauthorized"
   end
 
   @tag admin: true

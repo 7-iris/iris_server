@@ -11,6 +11,7 @@ defmodule Iris.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+    plug :fetch_session
   end
 
   if Mix.env == :dev do

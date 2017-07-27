@@ -3,6 +3,8 @@ defmodule Iris.UserController do
 
   alias Iris.User
 
+  plug Iris.Plugs.AuthedicateUser
+
   def index(conn, _params) do
     users = Repo.all(User)
     render(conn, "index.html", users: users)

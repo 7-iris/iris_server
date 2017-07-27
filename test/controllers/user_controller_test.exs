@@ -1,9 +1,17 @@
 defmodule Iris.UserControllerTest do
   use Iris.ConnCase
 
-  alias Iris.User
+  alias Iris.{User, TestHelper, Support.AuthenticationToken}
   @valid_attrs %{email: "test@test.com"}
   @invalid_attrs %{}
+
+  setup do
+    {:ok, admin_role} = TestHelper.create_role(%{title: "Admin Role", admin: true})
+    {:ok, admin_user} = TestHelper.create_user(admin_role, %{email: "admin@test.com"})
+    admin_token = AuthenticationToken.create_token(admin_user)
+    admin_conn = TestHelper.login_user(admin_token, @endpoint)
+    {:ok, conn: admin_conn}
+  end
 
   test "lists all entries on index", %{conn: conn} do
     conn = get conn, user_path(conn, :index)

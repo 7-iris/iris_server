@@ -1,9 +1,19 @@
 defmodule Iris.DeviceControllerTest do
   use Iris.ConnCase
 
-  alias Iris.Device
+  alias Iris.{Device, TestHelper, Support.AuthenticationToken}
+
   @valid_attrs %{last_synced: %{day: 17, hour: 14, min: 0, month: 4, sec: 0, year: 2010}, name: "some content", status: true, token: "some content"}
   @invalid_attrs %{}
+
+  setup do
+    {:ok, user_role} = TestHelper.create_role(%{title: "User Role", admin: false})
+    {:ok, simple_user} = TestHelper.create_user(user_role, %{email: "test@test.com"})
+
+    simple_token = AuthenticationToken.create_token(simple_user)
+    simple_conn = TestHelper.login_user(simple_token, @endpoint)
+    {:ok, conn: simple_conn}
+  end
 
   test "lists all entries on index", %{conn: conn} do
     conn = get conn, device_path(conn, :index)

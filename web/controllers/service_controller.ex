@@ -3,6 +3,8 @@ defmodule Iris.ServiceController do
 
   alias Iris.Service
 
+  plug Iris.Plugs.AuthedicateUser
+
   def index(conn, _params) do
     services = Repo.all(Service)
     render(conn, "index.json", services: services)
