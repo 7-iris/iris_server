@@ -24,6 +24,7 @@ defmodule Iris.Router do
     get "/dashboard", PageController, :dashboard
     get "/settings", PageController, :settings
     resources "/users", UserController
+    resources "/devices", DeviceController
 
     get "/signup", RegistrationController, :signup
     post "/signup", RegistrationController, :signup

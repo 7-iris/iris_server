@@ -1,0 +1,28 @@
+<h2>Show device</h2>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @device.name %>
+  </li>
+
+  <li>
+    <strong>Token:</strong>
+    <%= @device.token %>
+  </li>
+
+  <li>
+    <strong>Status:</strong>
+    <%= @device.status %>
+  </li>
+
+  <li>
+    <strong>Last synced:</strong>
+    <%= @device.last_synced %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: device_path(@conn, :edit, @device) %>
+<%= link "Back", to: device_path(@conn, :index) %>

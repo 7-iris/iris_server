@@ -1,0 +1,35 @@
+<div class="page-header">
+  <h4>Devices</h4>
+</div>
+
+<div class="bs-component">
+<table class="table table-striped table-hover table-bordered">
+  <thead class="thead-inverse">
+    <tr>
+      <th>Name</th>
+      <th>Token</th>
+      <th>Status</th>
+      <th>Last synced</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for device <- @devices do %>
+    <tr>
+      <td><%= device.name %></td>
+      <td><%= device.token %></td>
+      <td><%= device.status %></td>
+      <td><%= device.last_synced %></td>
+
+      <td class="text-right">
+        <%= link "Show", to: device_path(@conn, :show, device), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: device_path(@conn, :edit, device), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: device_path(@conn, :delete, device), method: :delete, class: "btn btn-danger btn-xs" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+<%= link "New device", to: device_path(@conn, :new) %>
+</div>

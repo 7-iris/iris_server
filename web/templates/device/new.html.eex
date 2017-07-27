@@ -1,0 +1,6 @@
+<h2>New device</h2>
+
+<%= render "form.html", changeset: @changeset,
+                        action: device_path(@conn, :create) %>
+
+<%= link "Back", to: device_path(@conn, :index) %>
