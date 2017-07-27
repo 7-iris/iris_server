@@ -12,7 +12,13 @@
       <ul class="nav navbar-nav ml-auto">
         <%= if user do %>
           <li class="nav-item">
-            <%= link "Dashboard", to: page_path(@conn, :dashboard), class: "nav-link" %>
+            <%= link "Message", to: page_path(@conn, :dashboard), class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link "Devices", to: device_path(@conn, :index), class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link "Applications", to: service_path(@conn, :index), class: "nav-link" %>
           </li>
           <%= if current_user_is_admin?(@conn) do %>
             <li class="nav-item">
