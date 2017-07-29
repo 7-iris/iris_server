@@ -1,7 +1,7 @@
-defmodule Iris.AuthTokenTest do
+defmodule Iris.TokenTest do
   use Iris.ModelCase
 
-  alias Iris.{AuthToken, TestHelper}
+  alias Iris.{Token, TestHelper}
 
   setup do
     {:ok, role} = TestHelper.create_role(%{title: "User Role", admin: false})
@@ -10,12 +10,12 @@ defmodule Iris.AuthTokenTest do
   end
 
   test "changeset with valid attributes", %{user: user} do
-    changeset = AuthToken.changeset(%AuthToken{}, user)
+    changeset = Token.create_auth_token(%Token{}, user)
     assert changeset.valid?
   end
 
   test "changeset with invalid attributes" do
-    changeset = AuthToken.changeset(%AuthToken{}, nil)
+    changeset = Token.create_auth_token(%Token{}, nil)
     refute changeset.valid?
   end
 end

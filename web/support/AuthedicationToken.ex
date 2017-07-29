@@ -2,21 +2,21 @@ defmodule Iris.Support.AuthenticationToken do
 
   import Ecto.Query, only: [where: 3]
 
-  alias Iris.{AuthToken, Endpoint, Mailer, Repo, Email, User}
-  alias Phoenix.Token
+  alias Iris.{Token, Endpoint, Mailer, Repo, Email, User}
 
   @token_max_age 1800
 
   def create_token(user) do
-    changeset = AuthToken.changeset(%AuthToken{}, user)
+    changeset = Token.create_auth_token(%Token{}, user)
     auth_token = Repo.insert!(changeset)
     auth_token.value
   end
 
   def verify_token_value(value) do
-     AuthToken
+     Token
      |> where([t], t.value == ^value)
      |> where([t], t.inserted_at > datetime_add(^Ecto.DateTime.utc, ^(@token_max_age * -1), "second"))
+     |> where([t], t.type == "auth")
      |> Repo.one()
      |> verify_token()
    end
@@ -29,7 +29,7 @@ defmodule Iris.Support.AuthenticationToken do
        |> Repo.delete!
 
      user_id = token.user.id
-     case Token.verify(Endpoint, "user", token.value, max_age: @token_max_age) do
+     case Phoenix.Token.verify(Endpoint, "user", token.value, max_age: @token_max_age) do
        {:ok, ^user_id} -> {:ok, token.user}
        {:error, reason} -> {:error, reason}
      end

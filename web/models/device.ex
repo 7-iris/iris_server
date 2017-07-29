@@ -7,7 +7,7 @@ defmodule Iris.Device do
     field :status, :boolean, default: false
     field :last_synced, Ecto.DateTime
 
-    # belongs_to :user, Iris.User
+    belongs_to :user, Iris.User
 
     timestamps()
   end
@@ -18,6 +18,6 @@ defmodule Iris.Device do
   def changeset(struct, params \\ %{}) do
     struct
     |> cast(params, [:name, :token, :status, :last_synced])
-    |> validate_required([:name, :token, :status, :last_synced])
+    |> validate_required([:name])
   end
 end

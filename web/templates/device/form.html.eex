@@ -12,21 +12,9 @@
   </div>
 
   <div class="form-group">
-    <%= label f, :token, class: "control-label" %>
-    <%= text_input f, :token, class: "form-control" %>
-    <%= error_tag f, :token %>
-  </div>
-
-  <div class="form-group">
     <%= label f, :status, class: "control-label" %>
     <%= checkbox f, :status, class: "form-control" %>
     <%= error_tag f, :status %>
-  </div>
-
-  <div class="form-group">
-    <%= label f, :last_synced, class: "control-label" %>
-    <%= datetime_select f, :last_synced, class: "form-control" %>
-    <%= error_tag f, :last_synced %>
   </div>
 
   <div class="form-group">

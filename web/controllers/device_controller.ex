@@ -11,7 +11,7 @@ defmodule Iris.DeviceController do
   end
 
   def new(conn, _params) do
-    changeset = Device.changeset(%Device{})
+    changeset = Device.changeset(%Device{status: false})
     render(conn, "new.html", changeset: changeset)
   end
 
