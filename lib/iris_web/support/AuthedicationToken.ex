@@ -2,7 +2,8 @@ defmodule Iris.Support.AuthenticationToken do
 
   import Ecto.Query, only: [where: 3]
 
-  alias Iris.{Token, Endpoint, Mailer, Repo, Email, User}
+  alias Iris.{Token, Mailer, Repo, Email, User}
+  alias IrisWeb.Endpoint
 
   @token_max_age 1800
 

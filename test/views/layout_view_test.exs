@@ -1,7 +1,8 @@
 defmodule Iris.LayoutViewTest do
   use IrisWeb.ConnCase, async: true
 
-  alias Iris.{TestHelper, Support.AuthenticationToken, LayoutView}
+  alias Iris.{TestHelper, Support.AuthenticationToken}
+  alias IrisWeb.LayoutView
 
   setup do
     {:ok, user_role} = TestHelper.create_role(%{title: "User Role", admin: false})
