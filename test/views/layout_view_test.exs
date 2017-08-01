@@ -1,5 +1,5 @@
 defmodule Iris.LayoutViewTest do
-  use Iris.ConnCase, async: true
+  use IrisWeb.ConnCase, async: true
 
   alias Iris.{TestHelper, Support.AuthenticationToken, LayoutView}
 

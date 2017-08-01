@@ -1,3 +1,3 @@
 defmodule Iris.PageViewTest do
-  use Iris.ConnCase, async: true
+  use IrisWeb.ConnCase, async: true
 end

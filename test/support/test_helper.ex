@@ -2,7 +2,8 @@ defmodule Iris.TestHelper do
 
   import Phoenix.ConnTest, only: [dispatch: 5, build_conn: 0]
 
-  alias Iris.{Repo, Role, User, Router.Helpers}
+  alias Iris.{Repo, Role, User}
+  alias IrisWeb.Router.Helpers
 
   def login_user(token, endpoint) do
     conn = build_conn()
