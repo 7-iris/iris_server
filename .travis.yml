@@ -3,7 +3,7 @@ sudo: required
 language: elixir
 
 elixir:
-  - 1.4.5
+  - 1.5
 
 addons:
   postgresql: '9.4'
