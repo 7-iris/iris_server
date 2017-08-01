@@ -1,5 +1,5 @@
 defmodule Iris.SessionControllerTest do
-  use Iris.ConnCase
+  use IrisWeb.ConnCase
 
   alias Iris.{TestHelper, Support.AuthenticationToken}
 

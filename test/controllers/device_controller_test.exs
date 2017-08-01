@@ -1,5 +1,5 @@
 defmodule Iris.DeviceControllerTest do
-  use Iris.ConnCase
+  use IrisWeb.ConnCase
 
   alias Iris.{Device, TestHelper, Support.AuthenticationToken}
 

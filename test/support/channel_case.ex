@@ -1,4 +1,4 @@
-defmodule Iris.ChannelCase do
+defmodule IrisWeb.ChannelCase do
   @moduledoc """
   This module defines the test case to be used by
   channel tests.
@@ -27,7 +27,7 @@ defmodule Iris.ChannelCase do
 
 
       # The default endpoint for testing
-      @endpoint Iris.Endpoint
+      @endpoint IrisWeb.Endpoint
     end
   end
 

@@ -1,5 +1,5 @@
 defmodule Iris.PageControllerTest do
-  use Iris.ConnCase
+  use IrisWeb.ConnCase
 
   alias Iris.{TestHelper, Support.AuthenticationToken}
 

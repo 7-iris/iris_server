@@ -1,5 +1,5 @@
 defmodule Iris.UserControllerTest do
-  use Iris.ConnCase
+  use IrisWeb.ConnCase
 
   alias Iris.{User, TestHelper, Support.AuthenticationToken}
   @valid_attrs %{email: "test@test.com"}

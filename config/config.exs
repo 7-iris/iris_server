@@ -10,10 +10,10 @@ config :iris,
   ecto_repos: [Iris.Repo]
 
 # Configures the endpoint
-config :iris, Iris.Endpoint,
+config :iris, IrisWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "kdl17scWn5kPZxPtO8n6NE0eMwC7c2PIcFLhG+LQTp2jUDCNI5N6tHwXC3dCFLRq",
-  render_errors: [view: Iris.ErrorView, accepts: ~w(html json)],
+  render_errors: [view: IrisWeb.ErrorView, accepts: ~w(html json)],
   pubsub: [name: Iris.PubSub,
            adapter: Phoenix.PubSub.PG2]
 

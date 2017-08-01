@@ -1,5 +1,5 @@
 defmodule Iris.RegistrationControllerTest do
-  use Iris.ConnCase
+  use IrisWeb.ConnCase
   use Bamboo.Test
 
   alias Iris.{TestHelper, Email}

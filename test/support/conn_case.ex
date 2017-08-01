@@ -1,4 +1,4 @@
-defmodule Iris.ConnCase do
+defmodule IrisWeb.ConnCase do
   @moduledoc """
   This module defines the test case to be used by
   tests that require setting up a connection.
@@ -25,10 +25,10 @@ defmodule Iris.ConnCase do
       import Ecto.Changeset
       import Ecto.Query
 
-      import Iris.Router.Helpers
+      import IrisWeb.Router.Helpers
 
       # The default endpoint for testing
-      @endpoint Iris.Endpoint
+      @endpoint IrisWeb.Endpoint
     end
   end
 
