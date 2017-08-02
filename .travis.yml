@@ -1,9 +1,16 @@
 dist: trusty
 sudo: required
-language: elixir
 
+language: elixir
 elixir:
   - 1.5
+otp_release:
+  - 18.0
+
+matrix:
+  include:
+    - elixir: 1.5
+      otp_release: 20.0
 
 addons:
   postgresql: '9.4'
