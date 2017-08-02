@@ -1,5 +1,5 @@
 defmodule Iris.MessageTest do
-  use Iris.ModelCase
+  use Iris.DataCase
 
   alias Iris.Message
 

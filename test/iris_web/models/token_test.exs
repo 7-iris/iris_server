@@ -1,5 +1,5 @@
 defmodule Iris.TokenTest do
-  use Iris.ModelCase
+  use Iris.DataCase
 
   alias Iris.{Token, TestHelper}
 

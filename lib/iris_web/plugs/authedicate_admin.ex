@@ -5,7 +5,7 @@ defmodule Iris.Plugs.AuthedicateAdmin do
 
   def init(default), do: default
 
-  def call(conn, default) do
+  def call(conn, _default) do
     user = get_session(conn, :current_user)
     cond do
       user != nil && User.is_admin?(user) -> conn

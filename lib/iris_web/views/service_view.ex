@@ -1,12 +1,12 @@
 defmodule IrisWeb.ServiceView do
-  use Iris.Web, :view
+  use IrisWeb, :view
 
   def render("index.json", %{services: services}) do
-    %{data: render_many(services, Iris.ServiceView, "service.json")}
+    %{data: render_many(services, IrisWeb.ServiceView, "service.json")}
   end
 
   def render("show.json", %{service: service}) do
-    render_one(service, Iris.ServiceView, "service.json")
+    render_one(service, IrisWeb.ServiceView, "service.json")
   end
 
   def render("service.json", %{service: service}) do

@@ -5,7 +5,7 @@ defmodule IrisWeb.ConnCase do
 
   Such tests rely on `Phoenix.ConnTest` and also
   import other functionality to make it easier
-  to build and query models.
+  to build common datastructures and query the data layer.
 
   Finally, if the test case interacts with the database,
   it cannot be async. For this reason, every test runs
@@ -19,12 +19,6 @@ defmodule IrisWeb.ConnCase do
     quote do
       # Import conveniences for testing with connections
       use Phoenix.ConnTest
-
-      alias Iris.Repo
-      import Ecto
-      import Ecto.Changeset
-      import Ecto.Query
-
       import IrisWeb.Router.Helpers
 
       # The default endpoint for testing
@@ -34,11 +28,9 @@ defmodule IrisWeb.ConnCase do
 
   setup tags do
     :ok = Ecto.Adapters.SQL.Sandbox.checkout(Iris.Repo)
-
     unless tags[:async] do
       Ecto.Adapters.SQL.Sandbox.mode(Iris.Repo, {:shared, self()})
     end
-
     {:ok, conn: Phoenix.ConnTest.build_conn()}
   end
 end

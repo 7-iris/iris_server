@@ -1,5 +1,5 @@
 defmodule Iris.UserTest do
-  use Iris.ModelCase
+  use Iris.DataCase
 
   alias Iris.User
 

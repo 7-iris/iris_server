@@ -1,3 +1,3 @@
 defmodule IrisWeb.SessionView do
-  use Iris.Web, :view
+  use IrisWeb, :view
 end

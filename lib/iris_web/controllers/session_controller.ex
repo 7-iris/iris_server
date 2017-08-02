@@ -1,15 +1,14 @@
 defmodule IrisWeb.SessionController do
+  use IrisWeb, :controller
 
-  use Iris.Web, :controller
-
-  alias Iris.{User, Support.AuthenticationToken}
+  alias Iris.{User, Support.AuthenticationToken, Repo}
 
   def login(%{method: "GET"} = conn, %{"t" => token}) do
     case AuthenticationToken.verify_token_value(token) do
       {:ok, user} ->
         user = Iris.User
-        |> Iris.Repo.get(user.id)
-        |> Iris.Repo.preload(:role)
+        |> Repo.get(user.id)
+        |> Repo.preload(:role)
         conn
         |> assign(:current_user, user)
         |> put_session(:current_user, user)

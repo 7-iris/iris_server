@@ -1,7 +1,7 @@
-defmodule Iris.DeviceControllerTest do
+defmodule IrisWeb.DeviceControllerTest do
   use IrisWeb.ConnCase
 
-  alias Iris.{Device, TestHelper, Support.AuthenticationToken}
+  alias Iris.{Device, TestHelper, Support.AuthenticationToken, Repo}
 
   @valid_attrs %{last_synced: %{day: 17, hour: 14, min: 0, month: 4, sec: 0, year: 2010}, name: "some content", status: true, token: "some content"}
   @invalid_attrs %{}

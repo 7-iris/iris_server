@@ -1,5 +1,5 @@
 defmodule IrisWeb.ErrorView do
-  use Iris.Web, :view
+  use IrisWeb, :view
 
   def render("404.html", _assigns) do
     "Page not found"

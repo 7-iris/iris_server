@@ -1,5 +1,6 @@
 defmodule Iris.Role do
-  use Iris.Web, :model
+  use Ecto.Schema
+  import Ecto.Changeset
 
   schema "roles" do
     field :title, :string

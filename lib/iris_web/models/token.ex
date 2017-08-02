@@ -1,7 +1,9 @@
 defmodule Iris.Token do
-  use Iris.Web, :model
+  use Ecto.Schema
+  import Ecto.Changeset
 
-  alias Iris.{Endpoint, User}
+  alias Iris.User
+  alias IrisWeb.Endpoint
 
   schema "tokens" do
     field :value, :string

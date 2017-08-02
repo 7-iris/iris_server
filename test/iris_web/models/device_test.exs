@@ -1,5 +1,5 @@
 defmodule Iris.DeviceTest do
-  use Iris.ModelCase
+  use Iris.DataCase
 
   alias Iris.Device
 

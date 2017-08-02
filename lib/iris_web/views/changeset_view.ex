@@ -1,5 +1,5 @@
 defmodule IrisWeb.ChangesetView do
-  use Iris.Web, :view
+  use IrisWeb, :view
 
   @doc """
   Traverses and translates changeset errors.

@@ -1,5 +1,7 @@
 defmodule Iris.User do
-  use Iris.Web, :model
+  use Ecto.Schema
+  import Ecto.Query, only: [from: 2]
+  import Ecto.Changeset
 
   alias Iris.{Repo, Role}
 

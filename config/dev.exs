@@ -16,7 +16,7 @@ config :iris, IrisWeb.Endpoint,
 
 
 # Watch static and templates for browser reloading.
-config :iris, Iris.Endpoint,
+config :iris, IrisWeb.Endpoint,
   live_reload: [
     patterns: [
       ~r{priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$},

@@ -1,12 +1,12 @@
 defmodule IrisWeb.MessageView do
-  use Iris.Web, :view
+  use IrisWeb, :view
 
   def render("index.json", %{messages: messages}) do
-    %{data: render_many(messages, Iris.MessageView, "message.json")}
+    %{data: render_many(messages, IrisWeb.MessageView, "message.json")}
   end
 
   def render("show.json", %{message: message}) do
-    render_one(message, Iris.MessageView, "message.json")
+    render_one(message, IrisWeb.MessageView, "message.json")
   end
 
   def render("message.json", %{message: message}) do

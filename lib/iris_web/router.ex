@@ -1,5 +1,5 @@
 defmodule IrisWeb.Router do
-  use Iris.Web, :router
+  use IrisWeb, :router
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -35,7 +35,7 @@ defmodule IrisWeb.Router do
     get "/logout", SessionController, :logout
   end
 
-  scope "/api", Iris do
+  scope "/api", IrisWeb do
      pipe_through :api
 
     resources "/services", ServiceController, except: [:new, :edit]

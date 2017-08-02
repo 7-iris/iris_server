@@ -1,7 +1,7 @@
 defmodule IrisWeb.UserController do
-  use Iris.Web, :controller
+  use IrisWeb, :controller
 
-  alias Iris.User
+  alias Iris.{User, Repo}
 
   plug Iris.Plugs.AuthedicateUser
 

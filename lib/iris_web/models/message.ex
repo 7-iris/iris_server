@@ -1,5 +1,6 @@
 defmodule Iris.Message do
-  use Iris.Web, :model
+  use Ecto.Schema
+  import Ecto.Changeset
 
   schema "messages" do
     field :title, :string

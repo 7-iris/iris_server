@@ -1,1 +1,1 @@
-Follow this link <%= session_url(Iris.Endpoint, :login, t: @token) %> to login to your account.
+Follow this link <%= session_url(IrisWeb.Endpoint, :login, t: @token) %> to login to your account.

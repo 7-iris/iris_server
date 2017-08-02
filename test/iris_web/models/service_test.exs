@@ -1,5 +1,5 @@
 defmodule Iris.ServiceTest do
-  use Iris.ModelCase
+  use Iris.DataCase
 
   alias Iris.Service
 

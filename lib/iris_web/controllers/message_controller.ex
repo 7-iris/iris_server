@@ -1,7 +1,7 @@
 defmodule IrisWeb.MessageController do
-  use Iris.Web, :controller
+  use IrisWeb, :controller
 
-  alias Iris.Message
+  alias Iris.{Message, Repo}
 
   def index(conn, _params) do
     messages = Repo.all(Message)
@@ -19,7 +19,7 @@ defmodule IrisWeb.MessageController do
       {:error, changeset} ->
         conn
         |> put_status(:unprocessable_entity)
-        |> render(Iris.ChangesetView, "error.json", changeset: changeset)
+        |> render(IrisWeb.ChangesetView, "error.json", changeset: changeset)
     end
   end
 
@@ -38,7 +38,7 @@ defmodule IrisWeb.MessageController do
       {:error, changeset} ->
         conn
         |> put_status(:unprocessable_entity)
-        |> render(Iris.ChangesetView, "error.json", changeset: changeset)
+        |> render(IrisWeb.ChangesetView, "error.json", changeset: changeset)
     end
   end
 

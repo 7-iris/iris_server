@@ -2,7 +2,9 @@ defmodule Iris.RegistrationControllerTest do
   use IrisWeb.ConnCase
   use Bamboo.Test
 
-  alias Iris.{TestHelper, Email}
+  alias Iris.TestHelper
+  alias IrisWeb.Email
+
   @valid_post_attrs %{"user" => %{email: "test2@test.com"}}
   @existing_user %{"user" => %{email: "test@test.com"}}
   @invalid_post_attrs %{"user" => %{email: nil}}

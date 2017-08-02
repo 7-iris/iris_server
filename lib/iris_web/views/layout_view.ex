@@ -1,5 +1,5 @@
 defmodule IrisWeb.LayoutView do
-  use Iris.Web, :view
+  use IrisWeb, :view
 
   alias Iris.User
 

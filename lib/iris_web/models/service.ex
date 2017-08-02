@@ -1,5 +1,6 @@
 defmodule Iris.Service do
-  use Iris.Web, :model
+  use Ecto.Schema
+  import Ecto.Changeset
 
   schema "services" do
     field :name, :string

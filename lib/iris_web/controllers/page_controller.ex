@@ -1,5 +1,5 @@
 defmodule IrisWeb.PageController do
-  use Iris.Web, :controller
+  use IrisWeb, :controller
 
   plug Iris.Plugs.AuthedicateUser when action != :index
 

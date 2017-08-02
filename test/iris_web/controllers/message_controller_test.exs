@@ -1,7 +1,8 @@
-defmodule Iris.MessageControllerTest do
+defmodule IrisWeb.MessageControllerTest do
   use IrisWeb.ConnCase
 
-  alias Iris.Message
+  alias Iris.{Message, Repo}
+
   @valid_attrs %{link: "some content", priority: 42, service_token: "some content", text: "some content", title: "some content"}
   @invalid_attrs %{}
 

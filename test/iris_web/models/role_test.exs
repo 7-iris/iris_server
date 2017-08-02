@@ -1,5 +1,5 @@
 defmodule Iris.RoleTest do
-  use Iris.ModelCase
+  use Iris.DataCase
 
   alias Iris.Role
 

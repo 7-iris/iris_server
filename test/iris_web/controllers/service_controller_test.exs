@@ -1,7 +1,7 @@
-defmodule Iris.ServiceControllerTest do
+defmodule IrisWeb.ServiceControllerTest do
   use IrisWeb.ConnCase
 
-  alias Iris.{Service, TestHelper, Support.AuthenticationToken}
+  alias Iris.{Service, TestHelper, Support.AuthenticationToken, Repo}
   @valid_attrs %{description: "some content", icon: "some content", name: "some content", token: "some content", type: "P"}
   @invalid_attrs %{}
 

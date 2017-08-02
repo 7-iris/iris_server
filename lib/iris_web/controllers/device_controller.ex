@@ -1,7 +1,7 @@
 defmodule IrisWeb.DeviceController do
-  use Iris.Web, :controller
+  use IrisWeb, :controller
 
-  alias Iris.Device
+  alias Iris.{Device, Repo}
 
   plug Iris.Plugs.AuthedicateUser
 

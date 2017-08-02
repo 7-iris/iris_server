@@ -1,5 +1,6 @@
 defmodule Iris.Device do
-  use Iris.Web, :model
+  use Ecto.Schema
+  import Ecto.Changeset
 
   schema "devices" do
     field :name, :string

@@ -1,3 +1,3 @@
 defmodule IrisWeb.PageView do
-  use Iris.Web, :view
+  use IrisWeb, :view
 end

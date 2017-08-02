@@ -5,7 +5,7 @@ defmodule Iris.Plugs.AuthedicateUser do
 
   def init(default), do: default
 
-  def call(conn, default) do
+  def call(conn, _default) do
     user = get_session(conn, :current_user)
     cond do
       user && User.is_active?(user) -> conn

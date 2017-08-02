@@ -1,7 +1,8 @@
 defmodule IrisWeb.RegistrationController do
-  use Iris.Web, :controller
+  use IrisWeb, :controller
 
-  alias Iris.{User, Repo, Email, Mailer}
+  alias Iris.{User, Repo, Mailer}
+  alias IrisWeb.Email
 
   def signup(%{method: "GET"} = conn, _params) do
     render conn, "signup.html", changeset: User.changeset(%User{})

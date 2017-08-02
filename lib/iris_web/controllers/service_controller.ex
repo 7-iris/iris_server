@@ -1,7 +1,7 @@
 defmodule IrisWeb.ServiceController do
-  use Iris.Web, :controller
+  use IrisWeb, :controller
 
-  alias Iris.Service
+  alias Iris.{Service, Repo}
 
   plug Iris.Plugs.AuthedicateUser
 
@@ -22,7 +22,7 @@ defmodule IrisWeb.ServiceController do
       {:error, changeset} ->
         conn
         |> put_status(:unprocessable_entity)
-        |> render(Iris.ChangesetView, "error.json", changeset: changeset)
+        |> render(IrisWeb.ChangesetView, "error.json", changeset: changeset)
     end
   end
 
@@ -41,7 +41,7 @@ defmodule IrisWeb.ServiceController do
       {:error, changeset} ->
         conn
         |> put_status(:unprocessable_entity)
-        |> render(Iris.ChangesetView, "error.json", changeset: changeset)
+        |> render(IrisWeb.ChangesetView, "error.json", changeset: changeset)
     end
   end
 

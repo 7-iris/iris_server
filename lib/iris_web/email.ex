@@ -1,6 +1,6 @@
-defmodule Iris.Email do
+defmodule IrisWeb.Email do
 
-  use Bamboo.Phoenix, view: Iris.EmailView
+  use Bamboo.Phoenix, view: IrisWeb.EmailView
 
   @doc """
   Email containing the magic login.
@@ -11,9 +11,9 @@ defmodule Iris.Email do
     |> to(user.email)
     |> from("no-reply@#{hostname}")
     |> subject("Login link")
-    |> put_html_layout({Iris.LayoutView, "email.html"})
+    |> put_html_layout({IrisWeb.LayoutView, "email.html"})
     |> render(:login, token: auth_token)
-    |> put_text_layout({Iris.LayoutView, "email.text"})
+    |> put_text_layout({IrisWeb.LayoutView, "email.text"})
     |> render(:login, token: auth_token)
   end
 
@@ -26,14 +26,14 @@ defmodule Iris.Email do
     |> to(user.email)
     |> from("no-reply@#{hostname}")
     |> subject("Welcome")
-    |> put_html_layout({Iris.LayoutView, "email.html"})
+    |> put_html_layout({IrisWeb.LayoutView, "email.html"})
     |> render(:welcome, user: user)
-    |> put_text_layout({Iris.LayoutView, "email.text"})
+    |> put_text_layout({IrisWeb.LayoutView, "email.text"})
     |> render(:welcome, user: user)
   end
 
   defp get_host_name() do
-    [{:url, [{:host, hostname} | _]} | _] = Application.get_env(:iris, Iris.Endpoint)
+    [{:url, [{:host, hostname} | _]} | _] = Application.get_env(:iris, IrisWeb.Endpoint)
     hostname
   end
 
