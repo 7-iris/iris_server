@@ -1,7 +1,7 @@
 defmodule IrisWeb.SessionController do
   use IrisWeb, :controller
 
-  alias Iris.{User, Support.AuthenticationToken, Repo}
+  alias Iris.{Accounts, User, Support.AuthenticationToken, Repo}
 
   def login(%{method: "GET"} = conn, %{"t" => token}) do
     case AuthenticationToken.verify_token_value(token) do
@@ -24,7 +24,7 @@ defmodule IrisWeb.SessionController do
   end
 
   def login(%{method: "GET"} = conn, _) do
-    render conn, "login.html", changeset: User.changeset(%User{})
+    render conn, "login.html", changeset: Accounts.change_user(%User{})
   end
 
   def login(%{method: "POST"} = conn, %{"user" => %{"email" => email}}) when is_nil(email) do

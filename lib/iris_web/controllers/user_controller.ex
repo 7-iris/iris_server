@@ -1,24 +1,23 @@
 defmodule IrisWeb.UserController do
   use IrisWeb, :controller
 
-  alias Iris.{User, Repo}
+  alias Iris.{User, Accounts}
 
   plug Iris.Plugs.AuthedicateUser
+  plug Iris.Plugs.AuthedicateAdmin
 
   def index(conn, _params) do
-    users = Repo.all(User)
+    users = Accounts.list_users()
     render(conn, "index.html", users: users)
   end
 
   def new(conn, _params) do
-    changeset = User.changeset(%User{})
+    changeset = Accounts.change_user(%User{})
     render(conn, "new.html", changeset: changeset)
   end
 
   def create(conn, %{"user" => user_params}) do
-    changeset = User.changeset(%User{}, user_params)
-
-    case Repo.insert(changeset) do
+    case Accounts.create_user(user_params) do
       {:ok, _user} ->
         conn
         |> put_flash(:info, "User created successfully.")
@@ -29,21 +28,19 @@ defmodule IrisWeb.UserController do
   end
 
   def show(conn, %{"id" => id}) do
-    user = Repo.get!(User, id)
+    user = Accounts.get_user!(id)
     render(conn, "show.html", user: user)
   end
 
   def edit(conn, %{"id" => id}) do
-    user = Repo.get!(User, id)
-    changeset = User.changeset(user)
+    user = Accounts.get_user!(id)
+    changeset = Accounts.change_user(user)
     render(conn, "edit.html", user: user, changeset: changeset)
   end
 
   def update(conn, %{"id" => id, "user" => user_params}) do
-    user = Repo.get!(User, id)
-    changeset = User.changeset(user, user_params)
-
-    case Repo.update(changeset) do
+    user = Accounts.get_user!(id)
+    case Accounts.update_user(user, user_params) do
       {:ok, user} ->
         conn
         |> put_flash(:info, "User updated successfully.")
@@ -54,11 +51,8 @@ defmodule IrisWeb.UserController do
   end
 
   def delete(conn, %{"id" => id}) do
-    user = Repo.get!(User, id)
-
-    # Here we use delete! (with a bang) because we expect
-    # it to always work (and if it does not, it will raise).
-    Repo.delete!(user)
+    user = Accounts.get_user!(id)
+    {:ok, _user} = Accounts.delete_user(user)
 
     conn
     |> put_flash(:info, "User deleted successfully.")

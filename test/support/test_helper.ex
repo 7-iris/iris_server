@@ -2,7 +2,7 @@ defmodule Iris.TestHelper do
 
   import Phoenix.ConnTest, only: [dispatch: 5, build_conn: 0]
 
-  alias Iris.{Repo, Role, User}
+  alias Iris.{Repo, Role, User, Accounts}
   alias IrisWeb.Router.Helpers
 
   def login_user(token, endpoint) do
@@ -15,12 +15,12 @@ defmodule Iris.TestHelper do
     |> Repo.insert
   end
 
-  def create_user(role, %{email: email}) do
+  def create_user(attributes) do
+    email = Map.get(attributes, :email)
     if user = Repo.get_by(User, email: email) do
       Repo.delete(user)
     end
-    User.create_user(%User{}, %{email: email}, role)
-    |> Repo.insert
+    Accounts.create_user(attributes)
   end
 
 end

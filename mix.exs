@@ -43,7 +43,8 @@ defmodule Iris.Mixfile do
      {:cowboy, "~> 1.0"},
      {:excoveralls, "~> 0.6", only: :test},
      {:hulaaki, "~> 0.0.4"},
-     {:bamboo, "~> 0.8"}]
+     {:bamboo, "~> 0.8"},
+     {:atomic_map, "~> 0.8"}]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.

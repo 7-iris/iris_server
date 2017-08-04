@@ -8,7 +8,7 @@ defmodule IrisWeb.DeviceControllerTest do
 
   setup do
     {:ok, user_role} = TestHelper.create_role(%{title: "User Role", admin: false})
-    {:ok, simple_user} = TestHelper.create_user(user_role, %{email: "test@test.com"})
+    {:ok, simple_user} = TestHelper.create_user(%{email: "test@test.com", role_id: user_role.id})
 
     simple_token = AuthenticationToken.create_token(simple_user)
     simple_conn = TestHelper.login_user(simple_token, @endpoint)

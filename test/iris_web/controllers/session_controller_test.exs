@@ -8,10 +8,10 @@ defmodule IrisWeb.SessionControllerTest do
 
   setup do
     {:ok, user_role} = TestHelper.create_role(%{title: "User Role", admin: false})
-    {:ok, simple_user} = TestHelper.create_user(user_role, %{email: "test@test.com"})
+    {:ok, simple_user} = TestHelper.create_user(%{email: "test@test.com", role_id: user_role.id})
 
     {:ok, admin_role} = TestHelper.create_role(%{title: "Admin Role", admin: true})
-    {:ok, admin_user} = TestHelper.create_user(admin_role, %{email: "admin@test.com"})
+    {:ok, admin_user} = TestHelper.create_user(%{email: "admin@test.com", role_id: admin_role.id})
 
     simple_token = AuthenticationToken.create_token(simple_user)
     admin_token = AuthenticationToken.create_token(admin_user)

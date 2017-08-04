@@ -1,9 +1,8 @@
 defmodule Iris.User do
   use Ecto.Schema
-  import Ecto.Query, only: [from: 2]
   import Ecto.Changeset
 
-  alias Iris.{Repo, Role}
+  alias Iris.{Repo, Role, User}
 
   schema "users" do
     field :email, :string
@@ -16,29 +15,14 @@ defmodule Iris.User do
   end
 
   @doc """
-  Creates a user with normal privilages.
-  """
-  def create_simple_user(struct, params \\ %{}) do
-    [role] = Repo.all(from role in Role, where: [admin: false])
-    create_user(struct, params, role)
-  end
-
-  def create_user(struct, params \\ %{}, role) do
-    struct
-    |> cast(params, [:email])
-    |> unique_constraint(:email)
-    |> put_change(:role_id, role.id)
-    |> validate_required([:email, :role_id])
-    |> validate_format(:email, ~r/@/)
-  end
-
-  @doc """
   Builds a changeset based on the `struct` and `params`.
   """
-  def changeset(struct, params \\ %{}) do
-    struct
-    |> cast(params, [:email])
-    |> validate_required([:email])
+  def changeset(%User{} = user, attributes) do
+    user
+    |> cast(attributes, [:email, :role_id])
+    |> validate_required([:email, :role_id])
+    |> validate_format(:email, ~r/@/)
+    |> unique_constraint(:email)
   end
 
   @doc """

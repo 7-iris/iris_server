@@ -3,7 +3,7 @@ defmodule Iris.UserTest do
 
   alias Iris.User
 
-  @valid_attrs %{disabled_at: nil, email: "some@emal.com"}
+  @valid_attrs %{disabled_at: nil, email: "some@emal.com", role_id: 1}
   @invalid_attrs %{}
 
   test "changeset with valid attributes" do

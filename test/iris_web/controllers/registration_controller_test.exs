@@ -11,7 +11,7 @@ defmodule Iris.RegistrationControllerTest do
 
   setup do
     {:ok, role} = TestHelper.create_role(%{title: "User Role", admin: false})
-    {:ok, user} = TestHelper.create_user(role, %{email: "test@test.com"})
+    {:ok, user} = TestHelper.create_user(%{email: "test@test.com", role_id: role.id})
     {:ok, user: user}
   end
 
