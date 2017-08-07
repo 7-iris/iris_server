@@ -19,9 +19,10 @@ before_install:
   - sudo service emqttd stop
 
 before_script:
-  - cp ./etc/emqttd/plugins/emq_auth_pgsql.conf /etc/emqttd/plugins/emq_auth_pgsql.conf
-  - cp ./etc/emqttd/emq.conf /etc/emqttd/emq.conf
+  - sudo cp ./etc/emqttd/plugins/emq_auth_pgsql.conf /etc/emqttd/plugins/emq_auth_pgsql.conf
+  - sudo cp ./etc/emqttd/emq.conf /etc/emqttd/emq.conf
   - sudo service emqttd start
+  - sudo emqttd_ctl plugins load emq_auth_pgsql
   - mix do ecto.create, ecto.migrate
 
 env:
