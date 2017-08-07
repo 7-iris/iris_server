@@ -1,4 +1,4 @@
-alias Iris.{Repo, Role}
+alias Iris.{Repo, Role, User, Device}
 import Ecto.Query, only: [from: 2]
 
 find_or_create_role = fn role_name, admin ->
@@ -14,5 +14,34 @@ find_or_create_role = fn role_name, admin ->
   end
 end
 
+find_or_create_user = fn email, role ->
+  case Repo.all(from u in User, where: u.email == ^email) do
+    [] ->
+      IO.puts "User: #{email} does not exists, creating"
+      %User{}
+      |> User.changeset(%{email: email, role_id: role.id})
+      |> Repo.insert!()
+    [user] ->
+      IO.puts "User: #{email} already exists, skipping"
+      user
+  end
+end
+
+find_or_create_device = fn name, token, user ->
+  case Repo.all(from u in Device, where: u.name == ^name) do
+    [] ->
+      IO.puts "Device: #{name} does not exists, creating"
+      %Device{}
+      |> Device.changeset(%{name: name, token: token, status: true, user_id: user.id})
+      |> Repo.insert!()
+    [user] ->
+      IO.puts "Device: #{name} already exists, skipping"
+      user
+  end
+end
+
 user_role = find_or_create_role.("User Role", false)
 admin_role = find_or_create_role.("Admin Role", true)
+admin_user = find_or_create_user.("admin@test.com", admin_role)
+simple_user = find_or_create_user.("user@test.com", user_role)
+device1 = find_or_create_device.("iris_server", "not_a_secret", admin_user)

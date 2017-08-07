@@ -18,7 +18,7 @@ defmodule Iris.Device do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:name, :token, :status, :last_synced])
-    |> validate_required([:name])
+    |> cast(params, [:name, :token, :status, :last_synced, :user_id])
+    |> validate_required([:name, :token, :user_id])
   end
 end

@@ -43,8 +43,10 @@ config :iris, Iris.Repo,
   pool_size: 10
 
 config :iris, Mqtt.Messenger,
-  client_id: "iris-server",
+  client_id: "iris_server",
   host: "localhost",
+  username: "admin@test.com",
+  password: "not_a_secret",
   port: 1883
 
 config :iris, Iris.Mailer,
