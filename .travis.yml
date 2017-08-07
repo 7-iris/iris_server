@@ -5,12 +5,7 @@ language: elixir
 elixir:
   - 1.5
 otp_release:
-  - 18.0
-
-matrix:
-  include:
-    - elixir: 1.5
-      otp_release: 20.0
+  - 20.0
 
 addons:
   postgresql: '9.4'
@@ -21,9 +16,12 @@ services:
 before_install:
   - wget http://emqtt.io/downloads/stable/ubuntu14_04-deb -O emqtt.deb
   - sudo dpkg -i emqtt.deb
-  - sudo service emqttd start
+  - sudo service emqttd stop
 
 before_script:
+  - cp ./etc/emqttd/plugins/emq_auth_pgsql.conf /etc/emqttd/plugins/emq_auth_pgsql.conf
+  - cp ./etc/emqttd/emq.conf /etc/emqttd/emq.conf
+  - sudo service emqttd start
   - mix do ecto.create, ecto.migrate
 
 env:
