@@ -6,6 +6,7 @@ defmodule Iris.User do
 
   schema "users" do
     field :email, :string
+    field :access_token, :string
     field :disabled_at, Ecto.DateTime
     field :disabled, :boolean, virtual: true
 

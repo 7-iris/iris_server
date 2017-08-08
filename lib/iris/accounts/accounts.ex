@@ -3,7 +3,10 @@ defmodule Iris.Accounts do
   The Accounts context.
   """
   import Ecto.Query, warn: false
-  alias Iris.{Role, User, Repo}
+  import Ecto
+  alias Iris.{Role, User, Repo, Device}
+
+  #### Users
 
   @doc """
   Returns the list of users.
@@ -46,9 +49,9 @@ defmodule Iris.Accounts do
   @doc """
   Updates a user.
   """
-  def update_user(%User{} = user, attrs) do
+  def update_user(%User{} = user, attributes) do
     user
-    |> User.changeset(attrs)
+    |> User.changeset(attributes)
     |> Repo.update()
   end
 
@@ -56,7 +59,7 @@ defmodule Iris.Accounts do
   Deletes a User.
   """
   def delete_user(%User{} = user) do
-    Repo.delete(user)
+    Repo.delete!(user)
   end
 
   @doc """
@@ -65,4 +68,60 @@ defmodule Iris.Accounts do
   def change_user(%User{} = user) do
     User.changeset(user, %{})
   end
+
+  #### Devices
+
+  @doc """
+  Returns a list of the devices that the user owns.
+  """
+  def list_devices_by_user(user) do
+    Repo.all(assoc(user, :devices))
+  end
+
+  @doc """
+  Gets a signle device
+  """
+  def get_device!(id, user) do
+    Repo.get!(assoc(user, :devices), id)
+  end
+
+  @doc """
+  Creates a device for the specified user.
+  """
+  def create_device(attributes \\ %{}, user) do
+    build_assoc(user, :devices)
+    |> struct(%{client_id: random_string(30)})
+    |> Device.changeset(attributes)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a device.
+  """
+  def update_device(%Device{} = device, attributes, user) do
+    build_assoc(user, :devices)
+    |> Device.changeset(attributes)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a device.
+  """
+  def delete_device(%Device{} = device) do
+    Repo.delete!(device)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking user changes.
+  """
+  def change_device(%Device{} = device, user) do
+      user
+      |> build_assoc(:devices)
+      |> Device.changeset(%{})
+  end
+
+  defp random_string(length) do
+    :crypto.strong_rand_bytes(length) |> Base.encode32 |> binary_part(0, length)
+  end
+
 end
