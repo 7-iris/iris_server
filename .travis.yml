@@ -16,13 +16,9 @@ services:
 before_install:
   - wget http://emqtt.io/downloads/stable/ubuntu14_04-deb -O emqtt.deb
   - sudo dpkg -i emqtt.deb
-  - sudo service emqttd stop
+  - sudo service emqttd start
 
 before_script:
-  - sudo cp ./etc/emqttd/plugins/emq_auth_pgsql.conf /etc/emqttd/plugins/emq_auth_pgsql.conf
-  - sudo cp ./etc/emqttd/emq.conf /etc/emqttd/emq.conf
-  - sudo service emqttd start
-  - sudo emqttd_ctl plugins load emq_auth_pgsql
   - mix do ecto.create, ecto.migrate
 
 env:
