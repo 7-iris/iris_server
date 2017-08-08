@@ -27,12 +27,12 @@ find_or_create_user = fn email, role ->
   end
 end
 
-find_or_create_device = fn name, token, user ->
+find_or_create_device = fn name, client_id, token, user ->
   case Repo.all(from u in Device, where: u.name == ^name) do
     [] ->
       IO.puts "Device: #{name} does not exists, creating"
       %Device{}
-      |> Device.changeset(%{name: name, token: token, status: true, user_id: user.id})
+      |> Device.changeset(%{name: name, client_id: client_id, token: token, status: true, user_id: user.id})
       |> Repo.insert!()
     [user] ->
       IO.puts "Device: #{name} already exists, skipping"
@@ -44,4 +44,5 @@ user_role = find_or_create_role.("User Role", false)
 admin_role = find_or_create_role.("Admin Role", true)
 admin_user = find_or_create_user.("admin@test.com", admin_role)
 simple_user = find_or_create_user.("user@test.com", user_role)
-device1 = find_or_create_device.("iris_server", "not_a_secret", admin_user)
+device1 = find_or_create_device.("iris_server", "client1", "not_a_secret", admin_user)
+device2 = find_or_create_device.("test_device", "client2", "not_a_secret", simple_user)

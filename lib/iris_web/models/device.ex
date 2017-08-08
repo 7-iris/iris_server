@@ -5,6 +5,7 @@ defmodule Iris.Device do
   schema "devices" do
     field :name, :string
     field :token, :string
+    field :client_id, :string
     field :status, :boolean, default: false
     field :last_synced, Ecto.DateTime
 
@@ -18,7 +19,7 @@ defmodule Iris.Device do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:name, :token, :status, :last_synced, :user_id])
+    |> cast(params, [:name, :client_id, :token, :status, :last_synced, :user_id])
     |> validate_required([:name, :token, :user_id])
   end
 end

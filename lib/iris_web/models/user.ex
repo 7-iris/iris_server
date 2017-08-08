@@ -2,14 +2,15 @@ defmodule Iris.User do
   use Ecto.Schema
   import Ecto.Changeset
 
-  alias Iris.{Repo, Role, User}
+  alias Iris.{Repo, Role, User, Device}
 
   schema "users" do
     field :email, :string
     field :disabled_at, Ecto.DateTime
     field :disabled, :boolean, virtual: true
 
-    belongs_to :role, Iris.Role
+    belongs_to :role, Role
+    has_many :devices, Device
 
     timestamps()
   end
