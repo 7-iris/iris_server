@@ -15,7 +15,11 @@ defmodule Mqtt.Messenger do
   ## GenServer API
 
   def init(%{} = state) do
-    {:ok, conn_pid} = Connection.start_link(self)
+    {:ok, conn_pid} = Connection.start_link(self())
+    connect(state, conn_pid)
+  end
+
+  defp connect(state, conn_pid) do
     configuration = Application.get_env(:iris, Mqtt.Messenger)
     host          = configuration |> Keyword.fetch!(:host)
     port          = configuration |> Keyword.fetch!(:port)
@@ -38,8 +42,10 @@ defmodule Mqtt.Messenger do
     state = Map.merge(%{connection: conn_pid}, state)
 
     connect_opts = [host: host, port: port, timeout: timeout]
-    :ok = state.connection |> Connection.connect(message, connect_opts)
-    {:ok, state}
+    case Connection.connect(state.connection, message, connect_opts) do
+      :ok -> {:ok, state}
+      {:error, error} -> {:ok, state}
+    end
   end
 
   def handle_call({:publish, opts}, _from, state) do
