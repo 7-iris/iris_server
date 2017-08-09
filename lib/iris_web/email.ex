@@ -32,6 +32,7 @@ defmodule IrisWeb.Email do
     |> render(:welcome, user: user)
   end
 
+  @doc false
   defp get_host_name() do
     [{:url, [{:host, hostname} | _]} | _] = Application.get_env(:iris, IrisWeb.Endpoint)
     hostname

@@ -3,8 +3,8 @@ defmodule Iris.Repo.Migrations.CreateDevice do
 
   def change do
     create table(:devices) do
-      add :name, :string
-      add :token, :string
+      add :name, :string, null: false
+      add :access_token, :string
       add :client_id, :string, null: false
       add :status, :boolean, default: false, null: false
       add :last_synced, :datetime

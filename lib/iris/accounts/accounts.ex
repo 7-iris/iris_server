@@ -59,7 +59,7 @@ defmodule Iris.Accounts do
   Deletes a User.
   """
   def delete_user(%User{} = user) do
-    Repo.delete!(user)
+    Repo.delete(user)
   end
 
   @doc """
@@ -99,7 +99,7 @@ defmodule Iris.Accounts do
   Updates a device.
   """
   def update_device(%Device{} = device, attributes, user) do
-    build_assoc(user, :devices)
+    device
     |> Device.changeset(attributes)
     |> Repo.update()
   end
@@ -108,18 +108,17 @@ defmodule Iris.Accounts do
   Deletes a device.
   """
   def delete_device(%Device{} = device) do
-    Repo.delete!(device)
+    Repo.delete(device)
   end
 
   @doc """
   Returns an `%Ecto.Changeset{}` for tracking user changes.
   """
   def change_device(%Device{} = device, user) do
-      user
-      |> build_assoc(:devices)
-      |> Device.changeset(%{})
+    Device.changeset(device, %{})
   end
 
+  @doc false
   defp random_string(length) do
     :crypto.strong_rand_bytes(length) |> Base.encode32 |> binary_part(0, length)
   end

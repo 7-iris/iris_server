@@ -8,8 +8,13 @@
   </li>
 
   <li>
-    <strong>Token:</strong>
-    <%= @device.token %>
+    <strong>Client id:</strong>
+    <%= @device.client_id %>
+  </li>
+
+  <li>
+    <strong>Access Token:</strong>
+    <%= @device.access_token %>
   </li>
 
   <li>
