@@ -2,6 +2,7 @@ defmodule Mqtt.Messenger do
   use GenServer
   alias Hulaaki.Connection
   alias Hulaaki.Message
+  require Logger
 
   # Public API
 
@@ -16,10 +17,6 @@ defmodule Mqtt.Messenger do
 
   def init(%{} = state) do
     {:ok, conn_pid} = Connection.start_link(self())
-    connect(state, conn_pid)
-  end
-
-  defp connect(state, conn_pid) do
     configuration = Application.get_env(:iris, Mqtt.Messenger)
     host          = configuration |> Keyword.fetch!(:host)
     port          = configuration |> Keyword.fetch!(:port)
@@ -42,9 +39,14 @@ defmodule Mqtt.Messenger do
     state = Map.merge(%{connection: conn_pid}, state)
 
     connect_opts = [host: host, port: port, timeout: timeout]
+
     case Connection.connect(state.connection, message, connect_opts) do
-      :ok -> {:ok, state}
-      {:error, error} -> {:ok, state}
+      :ok ->
+        Logger.info "Connection to mqtt established" 
+        {:ok, state}
+      {:error, _error} ->
+        Logger.info "Cannot establish connection with mqtt"
+        {:ok, state}
     end
   end
 

@@ -42,7 +42,7 @@ defmodule Iris.Mixfile do
      {:gettext, "~> 0.11"},
      {:cowboy, "~> 1.0"},
      {:excoveralls, "~> 0.6", only: :test},
-     {:hulaaki, git: "git://github.com/JosKar/hulaaki", branch: "handle_connection_refused"},
+     {:hulaaki, git: "git://github.com/suvash/hulaaki", ref: "298a5af"},
      {:bamboo, "~> 0.8"},
      {:atomic_map, "~> 0.8"}]
   end
