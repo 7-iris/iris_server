@@ -28,7 +28,7 @@ defmodule IrisWeb.RegistrationController do
         |> Mailer.deliver_later
         succes_signup(conn)
       {:error, changeset} ->
-        render conn, "signup.html", changeset: Accounts.change_user(%User{})
+        render conn, "signup.html", changeset: changeset
     end
   end
 

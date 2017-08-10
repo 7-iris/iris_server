@@ -98,7 +98,7 @@ defmodule Iris.Accounts do
   @doc """
   Updates a device.
   """
-  def update_device(%Device{} = device, attributes, user) do
+  def update_device(%Device{} = device, attributes) do
     device
     |> Device.changeset(attributes)
     |> Repo.update()
@@ -114,7 +114,7 @@ defmodule Iris.Accounts do
   @doc """
   Returns an `%Ecto.Changeset{}` for tracking user changes.
   """
-  def change_device(%Device{} = device, user) do
+  def change_device(%Device{} = device) do
     Device.changeset(device, %{})
   end
 

@@ -12,8 +12,7 @@ defmodule IrisWeb.DeviceController do
   end
 
   def new(conn, _params) do
-    user = get_session(conn, :current_user)
-    changeset = Accounts.change_device(%Device{status: false}, user)
+    changeset = Accounts.change_device(%Device{status: false})
     render(conn, "new.html", changeset: changeset)
   end
 
@@ -38,14 +37,14 @@ defmodule IrisWeb.DeviceController do
   def edit(conn, %{"id" => id}) do
     user = get_session(conn, :current_user)
     device = Accounts.get_device!(id, user)
-    changeset = Accounts.change_device(device, user)
+    changeset = Accounts.change_device(device)
     render(conn, "edit.html", device: device, changeset: changeset)
   end
 
   def update(conn, %{"id" => id, "device" => device_params}) do
     user = get_session(conn, :current_user)
     device = Accounts.get_device!(id, user)
-    case Accounts.update_device(device, device_params, user) do
+    case Accounts.update_device(device, device_params) do
       {:ok, device} ->
         conn
         |> put_flash(:info, "Device updated successfully.")
