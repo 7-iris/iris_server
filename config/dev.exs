@@ -27,7 +27,10 @@ config :iris, IrisWeb.Endpoint,
   ]
 
 # Do not include metadata nor timestamps in development logs
-config :logger, :console, format: "[$level] $message\n"
+config :logger,
+    :console, format: "[$level] $message\n",
+    level: :debug,
+    truncate: 4096
 
 # Set a higher stacktrace during development. Avoid configuring such
 # in production as building large stacktraces may be expensive.
@@ -45,8 +48,8 @@ config :iris, Iris.Repo,
 config :iris, Mqtt.Messenger,
   client_id: "iris_server",
   host: "localhost",
-  username: "admin@test.com",
-  password: "not_a_secret",
+  username: "admin@dev.com",
+  password: "sagapo",
   port: 1883
 
 config :iris, Iris.Mailer,

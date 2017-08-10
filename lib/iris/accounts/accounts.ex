@@ -39,7 +39,7 @@ defmodule Iris.Accounts do
   defp check_user_attributes(attributes) do
     case Map.get(attributes, :role_id) do
       nil ->
-        [role] = Repo.all(from role in Role, where: [admin: false])
+        [role|_] = Repo.all(from role in Role, where: [admin: false])
         Map.put(attributes, :role_id, role.id)
         |> AtomicMap.convert(safe: true);
       _ -> attributes
@@ -90,7 +90,7 @@ defmodule Iris.Accounts do
   """
   def create_device(attributes \\ %{}, user) do
     build_assoc(user, :devices)
-    |> struct(%{client_id: random_string(30)})
+    |> struct(%{client_id: random_string(20), access_token: random_string(30), password: random_string(5) })
     |> Device.changeset(attributes)
     |> Repo.insert()
   end

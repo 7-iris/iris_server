@@ -19,8 +19,10 @@ config :iris, Iris.Repo,
   pool: Ecto.Adapters.SQL.Sandbox
 
 config :iris, Mqtt.Messenger,
-  client_id: "iris-server",
+  client_id: "iris_server",
   host: "localhost",
+  username: "admin@dev.com",
+  password: "sagapo",
   port: 1883
 
 config :iris, Iris.Mailer,

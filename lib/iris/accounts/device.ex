@@ -4,6 +4,7 @@ defmodule Iris.Device do
 
   schema "devices" do
     field :name, :string
+    field :password, :string
     field :access_token, :string
     field :client_id, :string
     field :status, :boolean, default: false
@@ -19,7 +20,7 @@ defmodule Iris.Device do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:name, :client_id, :access_token, :status, :last_synced, :user_id])
-    |> validate_required([:name, :client_id, :access_token, :user_id])
+    |> cast(params, [:name, :password, :client_id, :access_token, :status, :last_synced, :user_id])
+    |> validate_required([:name, :password, :client_id, :access_token, :user_id])
   end
 end
